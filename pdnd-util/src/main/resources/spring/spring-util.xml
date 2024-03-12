@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/util
+                        http://www.springframework.org/schema/util/spring-util.xsd
+                        http://www.springframework.org/schema/cache
+						http://www.springframework.org/schema/cache/spring-cache.xsd
+                        http://www.springframework.org/schema/aop
+					    http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:component-scan
+		base-package="it.csi.staris.pdnd.util" />
+
+	<!-- Process annotations on registered beans like @Autowired... -->
+	<context:annotation-config />
+
+	<bean id="applicationContextManager"
+		class="it.csi.staris.pdnd.util.ApplicationContextManager"
+		lazy-init="false" />
+	
+	<!-- Dozer -->
+	<bean id="mapper" class="org.dozer.DozerBeanMapper">
+		<property name="mappingFiles">
+			<list>
+				<value>dozer/dozer-bean-mappings.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<!-- 
+	A	AUTOVEICOLO
+M	MOTOVEICOLO
+R	RIMORCHIO
+C	CICLOMOTORE
+Q	QUADRICICLO LEGGERO
+PA	TARGA PROVA AUTOVEICOLO
+PM	TARGA PROVA MOTOVEICOLO
+PR	TARGA PROVA RIMORCHIO
+PC	TARGA PROVA CICLOMOTORE
+PQ	TARGA PROVA QUADRICICLO LEGGERO
+PS	TARGA PROVA AUTOSCAFO
+MF	TARGA PROVA MOTORE FUORIBORDO
+NN	NON DEFINITO
+S	AUTOSCAFO
+F	MOTORE FUORIBORDO
+	
+	
+	 -->
+	
+	<bean id="dataDictionary" class="it.csi.staris.pdnd.util.DataDictionary">
+		<property name="tipoVeicolo">
+			<map>
+				<entry key="A" value="AUTOVEICOLO" />
+				<entry key="M" value="MOTOVEICOLO" />
+				<entry key="C" value="CICLOMOTORE" />
+				<entry key="Q" value="QUADRICICLO LEGGERO" />
+				<entry key="PA" value="TARGA PROVA AUTOVEICOLO" />
+				
+				<entry key="PA" value="TARGA PROVA AUTOVEICOLO" />
+				<entry key="PM" value="TARGA PROVA MOTOVEICOLO" />
+				<entry key="PR" value="TARGA PROVA RIMORCHIO" />
+				<entry key="PC" value="TARGA PROVA CICLOMOTORE" />
+				<entry key="PQ" value="TARGA PROVA QUADRICICLO LEGGERO" />
+				<entry key="PS" value="TARGA PROVA AUTOSCAFO" />
+				<entry key="MF" value="TARGA PROVA MOTORE FUORIBORDO" />
+				<entry key="NN" value="NON DEFINITO" />
+				<entry key="S" value="AUTOSCAFO" />
+				<entry key="F" value="MOTORE FUORIBORDO" />
+				
+			</map>
+		</property>
+		<property name="tipoCalcolo">
+			<map>
+				<entry key="RIC" value="Richesta" />
+				<entry key="PRO" value="Proposta" />
+				<entry key="CPL" value="Compensazione" />
+			</map>
+		</property>
+		
+	</bean>
+
+</beans>

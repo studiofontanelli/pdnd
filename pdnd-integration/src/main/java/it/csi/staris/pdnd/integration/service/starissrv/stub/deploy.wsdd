@@ -1,0 +1,468 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiziorissrvSrvService WSDL service -->
+
+  <service name="ServiziorissrvSrvPort" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://serviziorissrv.business.starissrv.staris.csi.it/"/>
+      <parameter name="wsdlServiceElement" value="ServiziorissrvSrvService"/>
+      <parameter name="schemaUnqualified" value="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      <parameter name="wsdlServicePort" value="ServiziorissrvSrvPort"/>
+      <parameter name="className" value="it.csi.staris.pdnd.integration.service.starissrv.stub.ServiziorissrvSrvServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Serviziorissrv"/>
+      <parameter name="typeMappingVersion" value="1.1"/>
+      <operation name="pagamento" qname="operNS:pagamento" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:esitoPagamento" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="parametri" type="tns:parametriPagamento" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="ErroreImprevistoException" qname="fns:ErroreImprevistoException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.ErroreImprevistoException" type="tns:ErroreImprevistoException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <operation name="storno" qname="operNS:storno" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:esitoStorno" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="parametri" type="tns:parametriStorno" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="ErroreImprevistoException" qname="fns:ErroreImprevistoException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.ErroreImprevistoException" type="tns:ErroreImprevistoException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <operation name="calcoloRate" qname="operNS:calcoloRate" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:esitoCalcoloRate" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="request" type="tns:parametriRichiestaCalcoloRate" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="CalcoloRateException" qname="fns:CalcoloRateException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.CalcoloRateException" type="tns:CalcoloRateException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <operation name="pagamentoIUV" qname="operNS:pagamentoIUV" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:esitoPagamentoIUV" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="request" type="tns:parametriPagamento" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="ErroreImprevistoException" qname="fns:ErroreImprevistoException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.ErroreImprevistoException" type="tns:ErroreImprevistoException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <operation name="stornoRate" qname="operNS:stornoRate" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:esitoStornoRate" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="request" type="tns:parametriRichiestaStornoRate" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="StornoRateException" qname="fns:StornoRateException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.StornoRateException" type="tns:StornoRateException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <operation name="consultazione" qname="operNS:consultazione" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:esitoConsultazione" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="prarametri" type="tns:parametriConsultazione" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="ErroreImprevistoException" qname="fns:ErroreImprevistoException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.ErroreImprevistoException" type="tns:ErroreImprevistoException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <operation name="pagamentoRateCumulativo" qname="operNS:pagamentoRateCumulativo" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:iuv" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="request" type="tns:requestPagamentoRateCumulativo" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="PagamentoRateException" qname="fns:PagamentoRateException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.PagamentoRateException" type="tns:PagamentoRateException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <operation name="calcoloTassaDatiTecnici" qname="operNS:calcoloTassaDatiTecnici" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:esitoCalcoloTassa" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="parametri" type="tns:parametriCalcoloTassaDatiTecnici" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="ErroreImprevistoException" qname="fns:ErroreImprevistoException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.ErroreImprevistoException" type="tns:ErroreImprevistoException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <operation name="pagamentoRate" qname="operNS:pagamentoRate" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:esitoPagamentoRate" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="request" type="tns:parametriRichiestaPagamentoRate" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="PagamentoRateException" qname="fns:PagamentoRateException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.PagamentoRateException" type="tns:PagamentoRateException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <operation name="calcoloTassa" qname="operNS:calcoloTassa" xmlns:operNS="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" returnQName="result" returnType="rtns:esitoCalcoloTassa" xmlns:rtns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" soapAction="" >
+        <parameter qname="parametri" type="tns:parametriCalcoloTassa" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="UnrecoverableException" qname="fns:UnrecoverableException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException" type="tns:UnrecoverableException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+        <fault name="ErroreImprevistoException" qname="fns:ErroreImprevistoException" xmlns:fns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/" class="it.csi.staris.pdnd.integration.service.starissrv.stub.ErroreImprevistoException" type="tns:ErroreImprevistoException" xmlns:tns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"/>
+      </operation>
+      <parameter name="allowedMethods" value="pagamentoRate storno stornoRate calcoloRate pagamentoRateCumulativo pagamento consultazione calcoloTassaDatiTecnici pagamentoIUV calcoloTassa"/>
+
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:targa"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Targa"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:esitoPagamento"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.EsitoPagamento"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:mittenteCalcoloRate"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.MittenteCalcoloRate"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:mittente"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Mittente"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:tipoTarga"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.TipoTarga"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:dataOraAsString"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.DataOraAsString"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:parametriStorno"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ParametriStorno"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:parametriRichiestaCalcoloRate"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ParametriRichiestaCalcoloRate"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:requestPagamentoRateCumulativo"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.RequestPagamentoRateCumulativo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:ErroreImprevistoException"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ErroreImprevistoException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:dataAsString"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.DataAsString"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:parametriRichiestaStornoRate"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ParametriRichiestaStornoRate"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:errori"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Errori"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:tipoSanzionamento"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.TipoSanzionamento"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:numeroRicevuta"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.NumeroRicevuta"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:esitoConsultazione"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.EsitoConsultazione"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:errore"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Errore"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:transazionePos"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.TransazionePos"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:modalitaCompensazione"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ModalitaCompensazione"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:valuta"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Valuta"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:UnrecoverableException"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.UnrecoverableException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:tipoRiduzione"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.TipoRiduzione"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:riduzione"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Riduzione"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:PagamentoRateException"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.PagamentoRateException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:parametriConsultazione"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ParametriConsultazione"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:esitoStornoRate"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.EsitoStornoRate"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:esitoPagamentoRate"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.EsitoPagamentoRate"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:rata"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Rata"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:divisa"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Divisa"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:esitoPagamentoIUV"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.EsitoPagamentoIUV"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:scadenza"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Scadenza"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:esitoCalcoloTassa"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.EsitoCalcoloTassa"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:StornoRateException"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.StornoRateException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:tipoFruitore"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.TipoFruitore"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:CalcoloRateException"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.CalcoloRateException"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:tipoModalitaEsenzioni"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.TipoModalitaEsenzioni"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:codiceFiscale"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.CodiceFiscale"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:regione"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Regione"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:identificativoPagamento"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.IdentificativoPagamento"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:parametriCalcoloTassa"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ParametriCalcoloTassa"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:iuv"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Iuv"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:esitoStorno"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.EsitoStorno"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:parametriCalcoloTassaDatiTecnici"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ParametriCalcoloTassaDatiTecnici"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:parametriPagamento"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ParametriPagamento"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:esitoCalcoloRate"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.EsitoCalcoloRate"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:parametriRichiestaPagamentoRate"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.ParametriRichiestaPagamentoRate"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:transazioneEnte"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.TransazioneEnte"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:validita"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.Validita"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://serviziorissrv.interfacews.starissrv.staris.csi.it/"
+        qname="ns:tipoCalcolo"
+        type="java:it.csi.staris.pdnd.integration.service.starissrv.stub.TipoCalcolo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

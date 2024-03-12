@@ -1,0 +1,4 @@
+/.swagger-codegen-ignore
+/src/
+/gen/
+/.swagger-codegen/

@@ -1,0 +1,2 @@
+module staris_pdnd {
+}

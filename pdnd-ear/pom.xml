@@ -1,0 +1,129 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>it.csi.stacore</groupId>
+		<artifactId>pdnd</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>pdnd-ear</artifactId>
+
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>it.csi.stacore</groupId>
+			<artifactId>pdnd-api</artifactId>
+			<version>${version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>macfonta</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy</id>
+								<phase>install</phase>
+								<configuration>
+									<tasks>
+										<copy file="${project.build.directory}/${ear.name}.ear"
+											tofile="${WILDFLY_HOME}/standalone/deployments/${ear.name}.ear" />
+
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>dev-rp-01</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy</id>
+								<phase>install</phase>
+								<configuration>
+									<tasks>
+										<!-- copia su una cartella di appoggio -->
+										<scp
+											localFile="${project.build.directory}/${ear.name}.ear"
+											remoteToFile="dev-wildfly-099@dev-wldsta03.csi.it:/home/dev-wildfly-099/upload/${ear.name}.ear"
+											verbose="true" 
+											password="mypass" 
+											trust="true" />
+
+										<!-- muovo il file nella cartella di deploy -->
+										 <sshexec
+                							host="dev-wldsta01.csi.it"
+                							username="dev-wildfly-087"
+                							password="mypass"
+                							trust="true"
+											command="cp /home/dev-wildfly-099/upload/${ear.name}.ear /home/dev-wildfly-099/deployments-01/${ear.name}.ear"/>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>com.jcraft</groupId>
+								<artifactId>jsch</artifactId>
+								<version>0.1.53</version>
+							</dependency>
+							<dependency>
+								<groupId>ant</groupId>
+								<artifactId>ant-jsch</artifactId>
+								<version>1.6.5</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+	<build>
+		<plugins>
+
+			<!-- creazione ear -->
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>${maven.ear.plugin.version}</version>
+				<configuration>
+					<finalName>${ear.name}</finalName>
+					<defaultLibBundleDir>/lib</defaultLibBundleDir>
+					<skinnyWars>true</skinnyWars>
+					<modules>
+						<webModule>
+							<groupId>it.csi.stacore</groupId>
+							<artifactId>pdnd-api</artifactId>
+							<contextRoot>/${context.name}</contextRoot>
+							<bundleFileName>pdnd-api.war</bundleFileName>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

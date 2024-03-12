@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+    					http://www.springframework.org/schema/jee 
+    					http://www.springframework.org/schema/jee/spring-jee.xsd
+    					http://www.springframework.org/schema/tx
+				        http://www.springframework.org/schema/tx/spring-tx.xsd
+				        http://www.springframework.org/schema/aop
+				        http://www.springframework.org/schema/aop/spring-aop.xsd">
+     
+    
+    
+    
+    
+	<jee:jndi-lookup id="starivblTxDS" jndi-name="java:/pdnd/jdbc/pdndTxDS" />
+	
+	<bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+    	<property name="transactionManagerName" value="java:jboss/TransactionManager" />
+    	<property name="userTransactionName" value="java:jboss/UserTransaction" />
+    	<property name="transactionSynchronizationRegistryName" value="java:jboss/TransactionSynchronizationRegistry" />
+    	
+    	
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="txManager" />
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="*" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	
+	<aop:config>
+		<aop:pointcut id="userServicePointCut"
+			expression="execution(* it.csi.staris.pdnd.business.helper.*Helper.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="userServicePointCut" />
+	</aop:config> 
+    
+
+</beans>
+	

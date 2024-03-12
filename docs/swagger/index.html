@@ -1,0 +1,3622 @@
+<!doctype html>
+<html>
+  <head>
+    <title>STARIVBL</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>STARIVBL</h1>
+    <div class="app-desc">API componente starivbl</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="andrea1.fontanelli@consulenti.csi.it">andrea1.fontanelli@consulenti.csi.it</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/andreafontanelli/starivbl/1.0.0</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+    <ol>
+      <li>HTTP Basic Authentication</li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Anagrafiche">Anagrafiche</a></h4>
+  <ul>
+  <li><a href="#cercaComuniByProvincia"><code><span class="http-method">get</span> /anagrafiche/comuni</code></a></li>
+  <li><a href="#findProvince"><code><span class="http-method">get</span> /anagrafiche/province</code></a></li>
+  <li><a href="#getStatiAvvisiPagamento"><code><span class="http-method">get</span> /anagrafiche/stati-avvisi-pagamento</code></a></li>
+  <li><a href="#getTipiVeicolo"><code><span class="http-method">get</span> /anagrafiche/tipi-veicolo</code></a></li>
+  </ul>
+  <h4><a href="#Auth">Auth</a></h4>
+  <ul>
+  <li><a href="#login"><code><span class="http-method">get</span> /login</code></a></li>
+  <li><a href="#logout"><code><span class="http-method">get</span> /logout</code></a></li>
+  </ul>
+  <h4><a href="#AvvisiPagamento">AvvisiPagamento</a></h4>
+  <ul>
+  <li><a href="#avviaPagamento"><code><span class="http-method">get</span> /avvisi-pagamento/{iuv}/avvia-pagamento</code></a></li>
+  <li><a href="#downloadAvvisoPagamento"><code><span class="http-method">post</span> /avvisi-pagamento/{iuv}/download</code></a></li>
+  <li><a href="#findAvvisiPagamento"><code><span class="http-method">post</span> /avvisi-pagamento/_search</code></a></li>
+  <li><a href="#getAvvisoPagamento"><code><span class="http-method">get</span> /avvisi-pagamento/{iuv}</code></a></li>
+  <li><a href="#presaVisioneAvvisoPagamento"><code><span class="http-method">put</span> /avvisi-pagamento/{iuv}/presa-visione</code></a></li>
+  </ul>
+  <h4><a href="#Delega">Delega</a></h4>
+  <ul>
+  <li><a href="#deleteDelega"><code><span class="http-method">delete</span> /delega/{id_delega}</code></a></li>
+  <li><a href="#insertDelega"><code><span class="http-method">post</span> /delega</code></a></li>
+  </ul>
+  <h4><a href="#Pagamenti">Pagamenti</a></h4>
+  <ul>
+  <li><a href="#downloadPagamento"><code><span class="http-method">post</span> /pagamenti/{iuv}/download</code></a></li>
+  <li><a href="#findPagamenti"><code><span class="http-method">post</span> /pagamenti/_search</code></a></li>
+  <li><a href="#getPagamento"><code><span class="http-method">get</span> /pagamenti/{iuv}</code></a></li>
+  </ul>
+  <h4><a href="#Rivenditori">Rivenditori</a></h4>
+  <ul>
+  <li><a href="#aggiornaRivenditore"><code><span class="http-method">put</span> /rivenditori</code></a></li>
+  <li><a href="#getRivenditore"><code><span class="http-method">get</span> /rivenditori/{codice_fiscale_rivenditore}</code></a></li>
+  <li><a href="#searchRivenditori"><code><span class="http-method">post</span> /rivenditori/_search</code></a></li>
+  </ul>
+  <h4><a href="#SocietaDelegate">SocietaDelegate</a></h4>
+  <ul>
+  <li><a href="#deleteSocietaDelegata"><code><span class="http-method">delete</span> /societa-delegate/{codice_fiscale_societa_delegata}</code></a></li>
+  <li><a href="#getSocietaDelegata"><code><span class="http-method">get</span> /societa-delegate/{codice_fiscale_societa_delegata}</code></a></li>
+  <li><a href="#insertSocietaDelegata"><code><span class="http-method">post</span> /societa-delegate</code></a></li>
+  <li><a href="#searchSocietaDelegate"><code><span class="http-method">post</span> /societa-delegate/_search</code></a></li>
+  <li><a href="#updateSocietaDelegata"><code><span class="http-method">put</span> /societa-delegate</code></a></li>
+  </ul>
+  <h4><a href="#Test">Test</a></h4>
+  <ul>
+  <li><a href="#testResources"><code><span class="http-method">get</span> /test/resources</code></a></li>
+  </ul>
+  <h4><a href="#Utenti">Utenti</a></h4>
+  <ul>
+  <li><a href="#accreditamentoNuovoUtente"><code><span class="http-method">post</span> /utenti/accreditamento-nuovo-utente</code></a></li>
+  <li><a href="#associaUtenteRivenditore"><code><span class="http-method">post</span> /utenti/{codice_fiscale_utente}/associa-rivenditore</code></a></li>
+  <li><a href="#deleteUtente"><code><span class="http-method">delete</span> /utenti/{codice_fiscale_utente}</code></a></li>
+  <li><a href="#getRivenditoriAssociati"><code><span class="http-method">get</span> /utenti/rivenditori-associati</code></a></li>
+  <li><a href="#getUtente"><code><span class="http-method">get</span> /utenti/{codice_fiscale_utente}</code></a></li>
+  <li><a href="#insertUtente"><code><span class="http-method">post</span> /utenti</code></a></li>
+  <li><a href="#rimuoviAssociazioneUtenteRivenditore"><code><span class="http-method">delete</span> /utenti/{codice_fiscale_utente}/rimuovi-rivenditore/{codice_fiscale_rivenditore}</code></a></li>
+  <li><a href="#searchUtenti"><code><span class="http-method">post</span> /utenti/_search</code></a></li>
+  <li><a href="#updateUtente"><code><span class="http-method">put</span> /utenti</code></a></li>
+  </ul>
+  <h4><a href="#Veicoli">Veicoli</a></h4>
+  <ul>
+  <li><a href="#findVeicoli"><code><span class="http-method">post</span> /veicoli/_search</code></a></li>
+  <li><a href="#getVeicolo"><code><span class="http-method">get</span> /veicoli/{id_veicolo}</code></a></li>
+  </ul>
+
+  <h1><a name="Anagrafiche">Anagrafiche</a></h1>
+  <div class="method"><a name="cercaComuniByProvincia"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /anagrafiche/comuni</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">cercaComuniByProvincia</span>)</div>
+    <div class="method-notes">recupera i comuni di una provincia</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">istat_provincia (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; il codice ISTAT della provincia </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Comune">Comune</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "descrizione" : "Torino",
+  "codice" : "L129 (per torino)"
+}, {
+  "descrizione" : "Torino",
+  "codice" : "L129 (per torino)"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="findProvince"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /anagrafiche/province</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">findProvince</span>)</div>
+    <div class="method-notes">Ricerca le province secondo i parametri di ricerca passati.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">search_type (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; <p>il tipo di ricerca da effettuare</p>
+<ul>
+<li>all - tutte le province</li>
+<li>piemonte - solo le province piemontesi</li>
+</ul>
+ </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Provincia">Provincia</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "descrizione" : "Torino",
+  "sigla" : "TO (per torino)"
+}, {
+  "descrizione" : "Torino",
+  "sigla" : "TO (per torino)"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getStatiAvvisiPagamento"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /anagrafiche/stati-avvisi-pagamento</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">getStatiAvvisiPagamento</span>)</div>
+    <div class="method-notes">restituisce i possibili statti degli avvisi pagamento</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#StatoAvvisoPagamento">StatoAvvisoPagamento</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "descrizione" : "descrizione",
+  "codice" : "codice"
+}, {
+  "descrizione" : "descrizione",
+  "codice" : "codice"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getTipiVeicolo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /anagrafiche/tipi-veicolo</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">getTipiVeicolo</span>)</div>
+    <div class="method-notes">restituisce i tipi veicolo</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#TipoVeicolo">TipoVeicolo</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "descrizione" : "descrizione",
+  "codice" : "codice"
+}, {
+  "descrizione" : "descrizione",
+  "codice" : "codice"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Auth">Auth</a></h1>
+  <div class="method"><a name="login"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /login</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">login</span>)</div>
+    <div class="method-notes">Servizio di effettua l'autenticazione e profilazione utente</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Utente">Utente</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data_ultimo_accesso" : "2000-01-23",
+  "codice_fiscale" : "codice_fiscale",
+  "cognome" : "cognome",
+  "rivenditori" : [ {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  }, {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  } ],
+  "tipo_utente" : {
+    "descrizione" : "descrizione",
+    "codice" : "Vedi Enum DefTipoUtente"
+  },
+  "data_cessazione" : "2000-01-23",
+  "nome" : "nome",
+  "telefono" : "telefono",
+  "email" : "email",
+  "data_primo_accesso" : "2000-01-23"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#Utente">Utente</a>
+    <h4 class="field-label">404</h4>
+    utente non presente in anagrafica
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errori di validazione
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="logout"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /logout</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">logout</span>)</div>
+    <div class="method-notes">Servizio di effettua la logout</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#UrlRedirect">UrlRedirect</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "url" : "url"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#UrlRedirect">UrlRedirect</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="AvvisiPagamento">AvvisiPagamento</a></h1>
+  <div class="method"><a name="avviaPagamento"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /avvisi-pagamento/{iuv}/avvia-pagamento</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">avviaPagamento</span>)</div>
+    <div class="method-notes">avvia la procedura di pagamento</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">iuv (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; lo iuv dell'avviso pagamento' </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#UrlRedirect">UrlRedirect</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "url" : "url"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Url su cui fare la redirect per effettuare il pagamento
+        <a href="#UrlRedirect">UrlRedirect</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">403</h4>
+    Forbidden
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    avviso pagamento non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="downloadAvvisoPagamento"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /avvisi-pagamento/{iuv}/download</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">downloadAvvisoPagamento</span>)</div>
+    <div class="method-notes">scarica l'avviso di pagamento'</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">iuv (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; lo iuv dell'avviso pagamento' </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Report">Report</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "file" : "file",
+  "mime_type" : "mime_type",
+  "nome" : "nome"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    il report
+        <a href="#Report">Report</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    avviso pagamento non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="findAvvisiPagamento"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /avvisi-pagamento/_search</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">findAvvisiPagamento</span>)</div>
+    <div class="method-notes">ricerca degli avvisi di pagamento</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">search_params <a href="#SearchAvvisiPagamento">SearchAvvisiPagamento</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Parametri di ricerca avvisi pagamento </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#AvvisoPagamento">AvvisoPagamento</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data_riferimento_to" : "2000-01-23",
+  "numero_veicoli_associati" : 5,
+  "importo" : 5.962133916683182377482808078639209270477294921875,
+  "stato_avviso_pagamento" : {
+    "descrizione" : "descrizione",
+    "codice" : "codice"
+  },
+  "data_riferimento_from" : "2000-01-23",
+  "iuv" : "iuv"
+}, {
+  "data_riferimento_to" : "2000-01-23",
+  "numero_veicoli_associati" : 5,
+  "importo" : 5.962133916683182377482808078639209270477294921875,
+  "stato_avviso_pagamento" : {
+    "descrizione" : "descrizione",
+    "codice" : "codice"
+  },
+  "data_riferimento_from" : "2000-01-23",
+  "iuv" : "iuv"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getAvvisoPagamento"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /avvisi-pagamento/{iuv}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">getAvvisoPagamento</span>)</div>
+    <div class="method-notes">recuper dell'avviso di pagamento'</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">iuv (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; lo iuv dell'avviso pagamento' </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#AvvisoPagamentoDetail">AvvisoPagamentoDetail</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "avviso_pagamento" : {
+    "data_riferimento_to" : "2000-01-23",
+    "numero_veicoli_associati" : 5,
+    "importo" : 5.962133916683182377482808078639209270477294921875,
+    "stato_avviso_pagamento" : {
+      "descrizione" : "descrizione",
+      "codice" : "codice"
+    },
+    "data_riferimento_from" : "2000-01-23",
+    "iuv" : "iuv"
+  },
+  "veicoli_associati" : [ {
+    "denominazione_rivenditore" : "denominazione_rivenditore",
+    "tipo_veicolo" : "tipo_veicolo",
+    "data_acquisizione" : "2000-01-23",
+    "sospensione" : {
+      "data_inizio_sospensione" : "2000-01-23",
+      "id_agevolazione_tau" : 1,
+      "data_fine_sospensione" : "2000-01-23",
+      "id" : 6
+    },
+    "id_veicolo" : 0,
+    "data_atto" : "2000-01-23",
+    "codice_fiscale_rivenditore" : "codice_fiscale_rivenditore",
+    "targa" : "targa",
+    "iuvAvvisoPagamento" : "iuvAvvisoPagamento"
+  }, {
+    "denominazione_rivenditore" : "denominazione_rivenditore",
+    "tipo_veicolo" : "tipo_veicolo",
+    "data_acquisizione" : "2000-01-23",
+    "sospensione" : {
+      "data_inizio_sospensione" : "2000-01-23",
+      "id_agevolazione_tau" : 1,
+      "data_fine_sospensione" : "2000-01-23",
+      "id" : 6
+    },
+    "id_veicolo" : 0,
+    "data_atto" : "2000-01-23",
+    "codice_fiscale_rivenditore" : "codice_fiscale_rivenditore",
+    "targa" : "targa",
+    "iuvAvvisoPagamento" : "iuvAvvisoPagamento"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Il veicolo
+        <a href="#AvvisoPagamentoDetail">AvvisoPagamentoDetail</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    avviso pagamento non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="presaVisioneAvvisoPagamento"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /avvisi-pagamento/{iuv}/presa-visione</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">presaVisioneAvvisoPagamento</span>)</div>
+    <div class="method-notes">Effettua la presa visione dell'avviso di pagamento'</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">iuv (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; lo iuv dell'avviso pagamento' </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Operazione effettuata con successo
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    avviso pagamento non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Delega">Delega</a></h1>
+  <div class="method"><a name="deleteDelega"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /delega/{id_delega}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">deleteDelega</span>)</div>
+    <div class="method-notes">servizio di cancellazione logica delega</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id_delega (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id delega da cancellare format: int64</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ok
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="insertDelega"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /delega</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">insertDelega</span>)</div>
+    <div class="method-notes">servizio di inserimento delega</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">societa-delegata <a href="#Delega">Delega</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; la delega da inserire </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    id delega
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Pagamenti">Pagamenti</a></h1>
+  <div class="method"><a name="downloadPagamento"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /pagamenti/{iuv}/download</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">downloadPagamento</span>)</div>
+    <div class="method-notes">scarica il pagamento in formato pdf</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">iuv (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; lo iuv dell'avviso pagamento' </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Report">Report</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "file" : "file",
+  "mime_type" : "mime_type",
+  "nome" : "nome"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Il report del pagamento
+        <a href="#Report">Report</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    avviso pagamento non trovato
+        <a href="#"></a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="findPagamenti"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /pagamenti/_search</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">findPagamenti</span>)</div>
+    <div class="method-notes">ricerca dei pagamento</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">search_params <a href="#SearchPagamenti">SearchPagamenti</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Parametri di ricerca pagamenti </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Pagamento">Pagamento</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "importo" : 2.3021358869347654518833223846741020679473876953125,
+  "data_pagamento" : "2000-01-23",
+  "iuv" : "iuv"
+}, {
+  "importo" : 2.3021358869347654518833223846741020679473876953125,
+  "data_pagamento" : "2000-01-23",
+  "iuv" : "iuv"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getPagamento"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /pagamenti/{iuv}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">getPagamento</span>)</div>
+    <div class="method-notes">recupera il pagamento</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">iuv (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; lo iuv dell'avviso pagamento' </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PagamentoDetail">PagamentoDetail</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "avviso_pagamento_detail" : {
+    "avviso_pagamento" : {
+      "data_riferimento_to" : "2000-01-23",
+      "numero_veicoli_associati" : 5,
+      "importo" : 5.962133916683182377482808078639209270477294921875,
+      "stato_avviso_pagamento" : {
+        "descrizione" : "descrizione",
+        "codice" : "codice"
+      },
+      "data_riferimento_from" : "2000-01-23",
+      "iuv" : "iuv"
+    },
+    "veicoli_associati" : [ {
+      "denominazione_rivenditore" : "denominazione_rivenditore",
+      "tipo_veicolo" : "tipo_veicolo",
+      "data_acquisizione" : "2000-01-23",
+      "sospensione" : {
+        "data_inizio_sospensione" : "2000-01-23",
+        "id_agevolazione_tau" : 1,
+        "data_fine_sospensione" : "2000-01-23",
+        "id" : 6
+      },
+      "id_veicolo" : 0,
+      "data_atto" : "2000-01-23",
+      "codice_fiscale_rivenditore" : "codice_fiscale_rivenditore",
+      "targa" : "targa",
+      "iuvAvvisoPagamento" : "iuvAvvisoPagamento"
+    }, {
+      "denominazione_rivenditore" : "denominazione_rivenditore",
+      "tipo_veicolo" : "tipo_veicolo",
+      "data_acquisizione" : "2000-01-23",
+      "sospensione" : {
+        "data_inizio_sospensione" : "2000-01-23",
+        "id_agevolazione_tau" : 1,
+        "data_fine_sospensione" : "2000-01-23",
+        "id" : 6
+      },
+      "id_veicolo" : 0,
+      "data_atto" : "2000-01-23",
+      "codice_fiscale_rivenditore" : "codice_fiscale_rivenditore",
+      "targa" : "targa",
+      "iuvAvvisoPagamento" : "iuvAvvisoPagamento"
+    } ]
+  },
+  "pagamento" : {
+    "importo" : 2.3021358869347654518833223846741020679473876953125,
+    "data_pagamento" : "2000-01-23",
+    "iuv" : "iuv"
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Il pagamento
+        <a href="#PagamentoDetail">PagamentoDetail</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    avviso pagamento non trovato
+        <a href="#"></a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Rivenditori">Rivenditori</a></h1>
+  <div class="method"><a name="aggiornaRivenditore"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /rivenditori</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">aggiornaRivenditore</span>)</div>
+    <div class="method-notes">servizio di aggiornamento rivenditori</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">rivenditore <a href="#Rivenditore">Rivenditore</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Il rivenditore da aggiornare </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#GenericResponse">GenericResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "Servizio ha risposto correttamente"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#GenericResponse">GenericResponse</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getRivenditore"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /rivenditori/{codice_fiscale_rivenditore}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">getRivenditore</span>)</div>
+    <div class="method-notes">servizio recupera il rivenditore</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">codice_fiscale_rivenditore (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; il codice fiscale rivenditore </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#RivenditoreDetail">RivenditoreDetail</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "utenti_associati" : [ {
+    "data_ultimo_accesso" : "2000-01-23",
+    "codice_fiscale" : "codice_fiscale",
+    "cognome" : "cognome",
+    "rivenditori" : [ {
+      "descrizione_comune" : "descrizione_comune",
+      "cellulare" : "cellulare",
+      "data_attivazione" : "2000-01-23",
+      "indirizzo" : "indirizzo",
+      "sigla_provincia" : "sigla_provincia",
+      "codice_fiscale" : "codice_fiscale",
+      "cap" : "cap",
+      "codice_comune" : "codice_comune",
+      "data_cessazione" : "2000-01-23",
+      "denominazione" : "denominazione",
+      "fax" : "fax",
+      "telefono" : "telefono",
+      "email" : "email",
+      "partita_iva" : "partita_iva"
+    }, {
+      "descrizione_comune" : "descrizione_comune",
+      "cellulare" : "cellulare",
+      "data_attivazione" : "2000-01-23",
+      "indirizzo" : "indirizzo",
+      "sigla_provincia" : "sigla_provincia",
+      "codice_fiscale" : "codice_fiscale",
+      "cap" : "cap",
+      "codice_comune" : "codice_comune",
+      "data_cessazione" : "2000-01-23",
+      "denominazione" : "denominazione",
+      "fax" : "fax",
+      "telefono" : "telefono",
+      "email" : "email",
+      "partita_iva" : "partita_iva"
+    } ],
+    "tipo_utente" : {
+      "descrizione" : "descrizione",
+      "codice" : "Vedi Enum DefTipoUtente"
+    },
+    "data_cessazione" : "2000-01-23",
+    "nome" : "nome",
+    "telefono" : "telefono",
+    "email" : "email",
+    "data_primo_accesso" : "2000-01-23"
+  }, {
+    "data_ultimo_accesso" : "2000-01-23",
+    "codice_fiscale" : "codice_fiscale",
+    "cognome" : "cognome",
+    "rivenditori" : [ {
+      "descrizione_comune" : "descrizione_comune",
+      "cellulare" : "cellulare",
+      "data_attivazione" : "2000-01-23",
+      "indirizzo" : "indirizzo",
+      "sigla_provincia" : "sigla_provincia",
+      "codice_fiscale" : "codice_fiscale",
+      "cap" : "cap",
+      "codice_comune" : "codice_comune",
+      "data_cessazione" : "2000-01-23",
+      "denominazione" : "denominazione",
+      "fax" : "fax",
+      "telefono" : "telefono",
+      "email" : "email",
+      "partita_iva" : "partita_iva"
+    }, {
+      "descrizione_comune" : "descrizione_comune",
+      "cellulare" : "cellulare",
+      "data_attivazione" : "2000-01-23",
+      "indirizzo" : "indirizzo",
+      "sigla_provincia" : "sigla_provincia",
+      "codice_fiscale" : "codice_fiscale",
+      "cap" : "cap",
+      "codice_comune" : "codice_comune",
+      "data_cessazione" : "2000-01-23",
+      "denominazione" : "denominazione",
+      "fax" : "fax",
+      "telefono" : "telefono",
+      "email" : "email",
+      "partita_iva" : "partita_iva"
+    } ],
+    "tipo_utente" : {
+      "descrizione" : "descrizione",
+      "codice" : "Vedi Enum DefTipoUtente"
+    },
+    "data_cessazione" : "2000-01-23",
+    "nome" : "nome",
+    "telefono" : "telefono",
+    "email" : "email",
+    "data_primo_accesso" : "2000-01-23"
+  } ],
+  "rivenditore" : {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#RivenditoreDetail">RivenditoreDetail</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    Rivenditore non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="searchRivenditori"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /rivenditori/_search</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">searchRivenditori</span>)</div>
+    <div class="method-notes">servizio di ricerca rivenditori</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">search_params <a href="#SearchRivenditori">SearchRivenditori</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Parametri di ricerca rivenditori </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Rivenditore">Rivenditore</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "descrizione_comune" : "descrizione_comune",
+  "cellulare" : "cellulare",
+  "data_attivazione" : "2000-01-23",
+  "indirizzo" : "indirizzo",
+  "sigla_provincia" : "sigla_provincia",
+  "codice_fiscale" : "codice_fiscale",
+  "cap" : "cap",
+  "codice_comune" : "codice_comune",
+  "data_cessazione" : "2000-01-23",
+  "denominazione" : "denominazione",
+  "fax" : "fax",
+  "telefono" : "telefono",
+  "email" : "email",
+  "partita_iva" : "partita_iva"
+}, {
+  "descrizione_comune" : "descrizione_comune",
+  "cellulare" : "cellulare",
+  "data_attivazione" : "2000-01-23",
+  "indirizzo" : "indirizzo",
+  "sigla_provincia" : "sigla_provincia",
+  "codice_fiscale" : "codice_fiscale",
+  "cap" : "cap",
+  "codice_comune" : "codice_comune",
+  "data_cessazione" : "2000-01-23",
+  "denominazione" : "denominazione",
+  "fax" : "fax",
+  "telefono" : "telefono",
+  "email" : "email",
+  "partita_iva" : "partita_iva"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="SocietaDelegate">SocietaDelegate</a></h1>
+  <div class="method"><a name="deleteSocietaDelegata"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /societa-delegate/{codice_fiscale_societa_delegata}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">deleteSocietaDelegata</span>)</div>
+    <div class="method-notes">servizio di cancellazione logica società delegate</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">codice_fiscale_societa_delegata (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; il codice fiscale della societ delegata </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ok
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getSocietaDelegata"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /societa-delegate/{codice_fiscale_societa_delegata}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">getSocietaDelegata</span>)</div>
+    <div class="method-notes">servizio recupera la società delegata</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">codice_fiscale_societa_delegata (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; il codice fiscale della societ delegata </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#SocietaDelegataDetail">SocietaDelegataDetail</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "societa_delegata" : {
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "descrizione_comune" : "descrizione_comune",
+    "indirizzo" : "indirizzo",
+    "denominazione" : "denominazione",
+    "partita_iva" : "partita_iva",
+    "sigla_provincia" : "sigla_provincia"
+  },
+  "utenti_delegati" : [ {
+    "data_ultimo_accesso" : "2000-01-23",
+    "codice_fiscale" : "codice_fiscale",
+    "cognome" : "cognome",
+    "rivenditori" : [ {
+      "descrizione_comune" : "descrizione_comune",
+      "cellulare" : "cellulare",
+      "data_attivazione" : "2000-01-23",
+      "indirizzo" : "indirizzo",
+      "sigla_provincia" : "sigla_provincia",
+      "codice_fiscale" : "codice_fiscale",
+      "cap" : "cap",
+      "codice_comune" : "codice_comune",
+      "data_cessazione" : "2000-01-23",
+      "denominazione" : "denominazione",
+      "fax" : "fax",
+      "telefono" : "telefono",
+      "email" : "email",
+      "partita_iva" : "partita_iva"
+    }, {
+      "descrizione_comune" : "descrizione_comune",
+      "cellulare" : "cellulare",
+      "data_attivazione" : "2000-01-23",
+      "indirizzo" : "indirizzo",
+      "sigla_provincia" : "sigla_provincia",
+      "codice_fiscale" : "codice_fiscale",
+      "cap" : "cap",
+      "codice_comune" : "codice_comune",
+      "data_cessazione" : "2000-01-23",
+      "denominazione" : "denominazione",
+      "fax" : "fax",
+      "telefono" : "telefono",
+      "email" : "email",
+      "partita_iva" : "partita_iva"
+    } ],
+    "tipo_utente" : {
+      "descrizione" : "descrizione",
+      "codice" : "Vedi Enum DefTipoUtente"
+    },
+    "data_cessazione" : "2000-01-23",
+    "nome" : "nome",
+    "telefono" : "telefono",
+    "email" : "email",
+    "data_primo_accesso" : "2000-01-23"
+  }, {
+    "data_ultimo_accesso" : "2000-01-23",
+    "codice_fiscale" : "codice_fiscale",
+    "cognome" : "cognome",
+    "rivenditori" : [ {
+      "descrizione_comune" : "descrizione_comune",
+      "cellulare" : "cellulare",
+      "data_attivazione" : "2000-01-23",
+      "indirizzo" : "indirizzo",
+      "sigla_provincia" : "sigla_provincia",
+      "codice_fiscale" : "codice_fiscale",
+      "cap" : "cap",
+      "codice_comune" : "codice_comune",
+      "data_cessazione" : "2000-01-23",
+      "denominazione" : "denominazione",
+      "fax" : "fax",
+      "telefono" : "telefono",
+      "email" : "email",
+      "partita_iva" : "partita_iva"
+    }, {
+      "descrizione_comune" : "descrizione_comune",
+      "cellulare" : "cellulare",
+      "data_attivazione" : "2000-01-23",
+      "indirizzo" : "indirizzo",
+      "sigla_provincia" : "sigla_provincia",
+      "codice_fiscale" : "codice_fiscale",
+      "cap" : "cap",
+      "codice_comune" : "codice_comune",
+      "data_cessazione" : "2000-01-23",
+      "denominazione" : "denominazione",
+      "fax" : "fax",
+      "telefono" : "telefono",
+      "email" : "email",
+      "partita_iva" : "partita_iva"
+    } ],
+    "tipo_utente" : {
+      "descrizione" : "descrizione",
+      "codice" : "Vedi Enum DefTipoUtente"
+    },
+    "data_cessazione" : "2000-01-23",
+    "nome" : "nome",
+    "telefono" : "telefono",
+    "email" : "email",
+    "data_primo_accesso" : "2000-01-23"
+  } ],
+  "deleghe" : [ {
+    "denominazione_rivenditore" : "denominazione_rivenditore",
+    "codice_fiscale_societa_delegata" : "codice_fiscale_societa_delegata",
+    "id" : 0,
+    "data_fine_validita" : "2000-01-23",
+    "codice_fiscale_rivenditore" : "codice_fiscale_rivenditore",
+    "data_inizio_validita" : "2000-01-23"
+  }, {
+    "denominazione_rivenditore" : "denominazione_rivenditore",
+    "codice_fiscale_societa_delegata" : "codice_fiscale_societa_delegata",
+    "id" : 0,
+    "data_fine_validita" : "2000-01-23",
+    "codice_fiscale_rivenditore" : "codice_fiscale_rivenditore",
+    "data_inizio_validita" : "2000-01-23"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#SocietaDelegataDetail">SocietaDelegataDetail</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    Dato non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="insertSocietaDelegata"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /societa-delegate</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">insertSocietaDelegata</span>)</div>
+    <div class="method-notes">servizio di inserimento società delegate</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">societa-delegata <a href="#SocietaDelegata">SocietaDelegata</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; la societa delegata da inserire </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    ok
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="searchSocietaDelegate"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /societa-delegate/_search</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">searchSocietaDelegate</span>)</div>
+    <div class="method-notes">servizio di ricerca Societa delegate</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">search_params <a href="#SearchSocietaDelegate">SearchSocietaDelegate</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Parametri di ricerca rivenditori </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#SocietaDelegata">SocietaDelegata</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "codice_fiscale" : "codice_fiscale",
+  "cap" : "cap",
+  "codice_comune" : "codice_comune",
+  "descrizione_comune" : "descrizione_comune",
+  "indirizzo" : "indirizzo",
+  "denominazione" : "denominazione",
+  "partita_iva" : "partita_iva",
+  "sigla_provincia" : "sigla_provincia"
+}, {
+  "codice_fiscale" : "codice_fiscale",
+  "cap" : "cap",
+  "codice_comune" : "codice_comune",
+  "descrizione_comune" : "descrizione_comune",
+  "indirizzo" : "indirizzo",
+  "denominazione" : "denominazione",
+  "partita_iva" : "partita_iva",
+  "sigla_provincia" : "sigla_provincia"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateSocietaDelegata"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /societa-delegate</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">updateSocietaDelegata</span>)</div>
+    <div class="method-notes">servizio di aggiornamento società delegate</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">societa-delegata <a href="#SocietaDelegata">SocietaDelegata</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; la societa delegata da aggiornare </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    ok
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Test">Test</a></h1>
+  <div class="method"><a name="testResources"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /test/resources</code></pre></div>
+    <div class="method-summary">Test resources (<span class="nickname">testResources</span>)</div>
+    <div class="method-notes">Effettua il test dei servizi richiamati</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#GenericResponse">GenericResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "Servizio ha risposto correttamente"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#GenericResponse">GenericResponse</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Utenti">Utenti</a></h1>
+  <div class="method"><a name="accreditamentoNuovoUtente"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /utenti/accreditamento-nuovo-utente</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">accreditamentoNuovoUtente</span>)</div>
+    <div class="method-notes">servizio di accreditamento nuovo utente</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    il codice fiscale utente
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="associaUtenteRivenditore"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /utenti/{codice_fiscale_utente}/associa-rivenditore</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">associaUtenteRivenditore</span>)</div>
+    <div class="method-notes">servizio che associa l'utente al rivenditore'</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">codice_fiscale_utente (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; codice fiscale utente </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">request <a href="#RequestAssociaRivenditore">RequestAssociaRivenditore</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    Utente non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteUtente"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /utenti/{codice_fiscale_utente}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">deleteUtente</span>)</div>
+    <div class="method-notes">servizio recupera l'utente</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">codice_fiscale_utente (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; codice fiscale utente </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Utente">Utente</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data_ultimo_accesso" : "2000-01-23",
+  "codice_fiscale" : "codice_fiscale",
+  "cognome" : "cognome",
+  "rivenditori" : [ {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  }, {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  } ],
+  "tipo_utente" : {
+    "descrizione" : "descrizione",
+    "codice" : "Vedi Enum DefTipoUtente"
+  },
+  "data_cessazione" : "2000-01-23",
+  "nome" : "nome",
+  "telefono" : "telefono",
+  "email" : "email",
+  "data_primo_accesso" : "2000-01-23"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#Utente">Utente</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    Utente non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getRivenditoriAssociati"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /utenti/rivenditori-associati</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">getRivenditoriAssociati</span>)</div>
+    <div class="method-notes">servizio recupera i rivenditori associati all'utente</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Rivenditore">Rivenditore</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "descrizione_comune" : "descrizione_comune",
+  "cellulare" : "cellulare",
+  "data_attivazione" : "2000-01-23",
+  "indirizzo" : "indirizzo",
+  "sigla_provincia" : "sigla_provincia",
+  "codice_fiscale" : "codice_fiscale",
+  "cap" : "cap",
+  "codice_comune" : "codice_comune",
+  "data_cessazione" : "2000-01-23",
+  "denominazione" : "denominazione",
+  "fax" : "fax",
+  "telefono" : "telefono",
+  "email" : "email",
+  "partita_iva" : "partita_iva"
+}, {
+  "descrizione_comune" : "descrizione_comune",
+  "cellulare" : "cellulare",
+  "data_attivazione" : "2000-01-23",
+  "indirizzo" : "indirizzo",
+  "sigla_provincia" : "sigla_provincia",
+  "codice_fiscale" : "codice_fiscale",
+  "cap" : "cap",
+  "codice_comune" : "codice_comune",
+  "data_cessazione" : "2000-01-23",
+  "denominazione" : "denominazione",
+  "fax" : "fax",
+  "telefono" : "telefono",
+  "email" : "email",
+  "partita_iva" : "partita_iva"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Elenco rivenditori associati all'utente
+        
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    request non valorizzata
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getUtente"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /utenti/{codice_fiscale_utente}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">getUtente</span>)</div>
+    <div class="method-notes">servizio recupera l'utente</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">codice_fiscale_utente (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; codice fiscale utente </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Utente">Utente</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data_ultimo_accesso" : "2000-01-23",
+  "codice_fiscale" : "codice_fiscale",
+  "cognome" : "cognome",
+  "rivenditori" : [ {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  }, {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  } ],
+  "tipo_utente" : {
+    "descrizione" : "descrizione",
+    "codice" : "Vedi Enum DefTipoUtente"
+  },
+  "data_cessazione" : "2000-01-23",
+  "nome" : "nome",
+  "telefono" : "telefono",
+  "email" : "email",
+  "data_primo_accesso" : "2000-01-23"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#Utente">Utente</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    Utente non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="insertUtente"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /utenti</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">insertUtente</span>)</div>
+    <div class="method-notes">servizio di inserimento l'utente</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">utente <a href="#Utente">Utente</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Utente">Utente</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data_ultimo_accesso" : "2000-01-23",
+  "codice_fiscale" : "codice_fiscale",
+  "cognome" : "cognome",
+  "rivenditori" : [ {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  }, {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  } ],
+  "tipo_utente" : {
+    "descrizione" : "descrizione",
+    "codice" : "Vedi Enum DefTipoUtente"
+  },
+  "data_cessazione" : "2000-01-23",
+  "nome" : "nome",
+  "telefono" : "telefono",
+  "email" : "email",
+  "data_primo_accesso" : "2000-01-23"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    OK
+        <a href="#Utente">Utente</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rimuoviAssociazioneUtenteRivenditore"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /utenti/{codice_fiscale_utente}/rimuovi-rivenditore/{codice_fiscale_rivenditore}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">rimuoviAssociazioneUtenteRivenditore</span>)</div>
+    <div class="method-notes">servizio che elimina l'associazione utente rivenditore'</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">codice_fiscale_utente (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; codice fiscale utente </div><div class="param">codice_fiscale_rivenditore (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; codice fiscale rivenditore </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    Utente non trovato, rivenditore non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="searchUtenti"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /utenti/_search</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">searchUtenti</span>)</div>
+    <div class="method-notes">servizio recupera i rivenditori associati all'utente</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">search_params <a href="#SearchUtenti">SearchUtenti</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Parametri di ricerca rivenditori </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Utente">Utente</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "data_ultimo_accesso" : "2000-01-23",
+  "codice_fiscale" : "codice_fiscale",
+  "cognome" : "cognome",
+  "rivenditori" : [ {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  }, {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  } ],
+  "tipo_utente" : {
+    "descrizione" : "descrizione",
+    "codice" : "Vedi Enum DefTipoUtente"
+  },
+  "data_cessazione" : "2000-01-23",
+  "nome" : "nome",
+  "telefono" : "telefono",
+  "email" : "email",
+  "data_primo_accesso" : "2000-01-23"
+}, {
+  "data_ultimo_accesso" : "2000-01-23",
+  "codice_fiscale" : "codice_fiscale",
+  "cognome" : "cognome",
+  "rivenditori" : [ {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  }, {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  } ],
+  "tipo_utente" : {
+    "descrizione" : "descrizione",
+    "codice" : "Vedi Enum DefTipoUtente"
+  },
+  "data_cessazione" : "2000-01-23",
+  "nome" : "nome",
+  "telefono" : "telefono",
+  "email" : "email",
+  "data_primo_accesso" : "2000-01-23"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Elenco utenti
+        
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateUtente"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /utenti</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">updateUtente</span>)</div>
+    <div class="method-notes">servizio di aggiornamento l'utente</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">utente <a href="#Utente">Utente</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Utente">Utente</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "data_ultimo_accesso" : "2000-01-23",
+  "codice_fiscale" : "codice_fiscale",
+  "cognome" : "cognome",
+  "rivenditori" : [ {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  }, {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  } ],
+  "tipo_utente" : {
+    "descrizione" : "descrizione",
+    "codice" : "Vedi Enum DefTipoUtente"
+  },
+  "data_cessazione" : "2000-01-23",
+  "nome" : "nome",
+  "telefono" : "telefono",
+  "email" : "email",
+  "data_primo_accesso" : "2000-01-23"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#Utente">Utente</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    request non valorizzata
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Veicoli">Veicoli</a></h1>
+  <div class="method"><a name="findVeicoli"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /veicoli/_search</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">findVeicoli</span>)</div>
+    <div class="method-notes">ricerca dei veicoli</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">search_params <a href="#SearchVeicoli">SearchVeicoli</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Parametri di ricerca rivenditori </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#VeicoloSearchResult">VeicoloSearchResult</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "denominazione_rivenditore" : "denominazione_rivenditore",
+  "tipo_veicolo" : "tipo_veicolo",
+  "data_acquisizione" : "2000-01-23",
+  "sospensione" : {
+    "data_inizio_sospensione" : "2000-01-23",
+    "id_agevolazione_tau" : 1,
+    "data_fine_sospensione" : "2000-01-23",
+    "id" : 6
+  },
+  "id_veicolo" : 0,
+  "data_atto" : "2000-01-23",
+  "codice_fiscale_rivenditore" : "codice_fiscale_rivenditore",
+  "targa" : "targa",
+  "iuvAvvisoPagamento" : "iuvAvvisoPagamento"
+}, {
+  "denominazione_rivenditore" : "denominazione_rivenditore",
+  "tipo_veicolo" : "tipo_veicolo",
+  "data_acquisizione" : "2000-01-23",
+  "sospensione" : {
+    "data_inizio_sospensione" : "2000-01-23",
+    "id_agevolazione_tau" : 1,
+    "data_fine_sospensione" : "2000-01-23",
+    "id" : 6
+  },
+  "id_veicolo" : 0,
+  "data_atto" : "2000-01-23",
+  "codice_fiscale_rivenditore" : "codice_fiscale_rivenditore",
+  "targa" : "targa",
+  "iuvAvvisoPagamento" : "iuvAvvisoPagamento"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getVeicolo"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /veicoli/{id_veicolo}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">getVeicolo</span>)</div>
+    <div class="method-notes">ricerca del veicolo per ID</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id_veicolo (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; la chiave primaria del veicolo format: int32</div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Veicolo">Veicolo</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "rivenditore" : {
+    "descrizione_comune" : "descrizione_comune",
+    "cellulare" : "cellulare",
+    "data_attivazione" : "2000-01-23",
+    "indirizzo" : "indirizzo",
+    "sigla_provincia" : "sigla_provincia",
+    "codice_fiscale" : "codice_fiscale",
+    "cap" : "cap",
+    "codice_comune" : "codice_comune",
+    "data_cessazione" : "2000-01-23",
+    "denominazione" : "denominazione",
+    "fax" : "fax",
+    "telefono" : "telefono",
+    "email" : "email",
+    "partita_iva" : "partita_iva"
+  },
+  "tipo_veicolo" : "tipo_veicolo",
+  "data_acquisizione" : "2000-01-23",
+  "sospensione" : {
+    "data_inizio_sospensione" : "2000-01-23",
+    "id_agevolazione_tau" : 1,
+    "data_fine_sospensione" : "2000-01-23",
+    "id" : 6
+  },
+  "avviso_pagamento" : {
+    "data_riferimento_to" : "2000-01-23",
+    "numero_veicoli_associati" : 5,
+    "importo" : 5.962133916683182377482808078639209270477294921875,
+    "stato_avviso_pagamento" : {
+      "descrizione" : "descrizione",
+      "codice" : "codice"
+    },
+    "data_riferimento_from" : "2000-01-23",
+    "iuv" : "iuv"
+  },
+  "id_veicolo" : 0,
+  "pagamento" : {
+    "importo" : 2.3021358869347654518833223846741020679473876953125,
+    "data_pagamento" : "2000-01-23",
+    "iuv" : "iuv"
+  },
+  "data_atto" : "2000-01-23",
+  "targa" : "targa"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Il veicolo
+        <a href="#Veicolo">Veicolo</a>
+    <h4 class="field-label">401</h4>
+    Utente non autorizzato alla risorsa
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">404</h4>
+    veicolo non trovato
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">422</h4>
+    Errore di validazione della richiesta
+        <a href="#ErrorDto">ErrorDto</a>
+    <h4 class="field-label">500</h4>
+    Internal server error
+        <a href="#ErrorDto">ErrorDto</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#AvvisoPagamento"><code>AvvisoPagamento</code> - </a></li>
+    <li><a href="#AvvisoPagamentoDetail"><code>AvvisoPagamentoDetail</code> - </a></li>
+    <li><a href="#Comune"><code>Comune</code> - </a></li>
+    <li><a href="#DefStatoAvvioPagamento"><code>DefStatoAvvioPagamento</code> - </a></li>
+    <li><a href="#DefTipoUtente"><code>DefTipoUtente</code> - </a></li>
+    <li><a href="#Delega"><code>Delega</code> - </a></li>
+    <li><a href="#ErrorDetail"><code>ErrorDetail</code> - </a></li>
+    <li><a href="#ErrorDto"><code>ErrorDto</code> - </a></li>
+    <li><a href="#GenericResponse"><code>GenericResponse</code> - </a></li>
+    <li><a href="#Pagamento"><code>Pagamento</code> - </a></li>
+    <li><a href="#PagamentoDetail"><code>PagamentoDetail</code> - </a></li>
+    <li><a href="#Provincia"><code>Provincia</code> - </a></li>
+    <li><a href="#Report"><code>Report</code> - </a></li>
+    <li><a href="#RequestAssociaRivenditore"><code>RequestAssociaRivenditore</code> - </a></li>
+    <li><a href="#Rivenditore"><code>Rivenditore</code> - </a></li>
+    <li><a href="#RivenditoreDetail"><code>RivenditoreDetail</code> - </a></li>
+    <li><a href="#SearchAvvisiPagamento"><code>SearchAvvisiPagamento</code> - </a></li>
+    <li><a href="#SearchPagamenti"><code>SearchPagamenti</code> - </a></li>
+    <li><a href="#SearchRivenditori"><code>SearchRivenditori</code> - </a></li>
+    <li><a href="#SearchSocietaDelegate"><code>SearchSocietaDelegate</code> - </a></li>
+    <li><a href="#SearchUtenti"><code>SearchUtenti</code> - </a></li>
+    <li><a href="#SearchVeicoli"><code>SearchVeicoli</code> - </a></li>
+    <li><a href="#SocietaDelegata"><code>SocietaDelegata</code> - </a></li>
+    <li><a href="#SocietaDelegataDetail"><code>SocietaDelegataDetail</code> - </a></li>
+    <li><a href="#Sospensione"><code>Sospensione</code> - </a></li>
+    <li><a href="#StatoAvvisoPagamento"><code>StatoAvvisoPagamento</code> - </a></li>
+    <li><a href="#StatoVeicolo"><code>StatoVeicolo</code> - </a></li>
+    <li><a href="#TipoUtente"><code>TipoUtente</code> - </a></li>
+    <li><a href="#TipoVeicolo"><code>TipoVeicolo</code> - </a></li>
+    <li><a href="#UrlRedirect"><code>UrlRedirect</code> - </a></li>
+    <li><a href="#Utente"><code>Utente</code> - </a></li>
+    <li><a href="#Veicolo"><code>Veicolo</code> - </a></li>
+    <li><a href="#VeicoloSearchResult"><code>VeicoloSearchResult</code> - </a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="AvvisoPagamento"><code>AvvisoPagamento</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Avviso Pagamento</div>
+    <div class="field-items">
+      <div class="param">iuv (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> identificatore univoco pagamento </div>
+<div class="param">importo (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Importo </div>
+<div class="param">stato_avviso_pagamento (optional)</div><div class="param-desc"><span class="param-type"><a href="#StatoAvvisoPagamento">StatoAvvisoPagamento</a></span> La sospensione associata al veicolo </div>
+<div class="param">numero_veicoli_associati (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> numero veicoli associati all'avviso pagamento format: int32</div>
+<div class="param">data_riferimento_from (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data riferimento (data da) format: date</div>
+<div class="param">data_riferimento_to (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data riferimento (data a) format: date</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="AvvisoPagamentoDetail"><code>AvvisoPagamentoDetail</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Dettaglio avviso Pagamento</div>
+    <div class="field-items">
+      <div class="param">avviso_pagamento (optional)</div><div class="param-desc"><span class="param-type"><a href="#AvvisoPagamento">AvvisoPagamento</a></span> l'avviso pagamento </div>
+<div class="param">veicoli_associati (optional)</div><div class="param-desc"><span class="param-type"><a href="#VeicoloSearchResult">array[VeicoloSearchResult]</a></span> numero veicoli associati all'avviso pagamento </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Comune"><code>Comune</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Comune</div>
+    <div class="field-items">
+      <div class="param">codice (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice comune </div>
+<div class="param">descrizione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> descrizione comune </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="DefStatoAvvioPagamento"><code>DefStatoAvvioPagamento</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="DefTipoUtente"><code>DefTipoUtente</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Delega"><code>Delega</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Delega</div>
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> pk delega format: int32</div>
+<div class="param">codice_fiscale_rivenditore (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> cf rivenditore </div>
+<div class="param">denominazione_rivenditore (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> denominazione rivenditore </div>
+<div class="param">codice_fiscale_societa_delegata (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> cf societa delegata </div>
+<div class="param">data_inizio_validita (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data inizio validita format: date</div>
+<div class="param">data_fine_validita (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data fine validita format: date</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ErrorDetail"><code>ErrorDetail</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>rappresenta il dettaglio errore restituito in caso di errori di validazione sui campi di input</div>
+    <div class="field-items">
+      <div class="param">field (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> il nome del campo per cui è falita la validazione </div>
+<div class="param">error (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> l'errore di validazione effettivo </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la descrizione dell'errore </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ErrorDto"><code>ErrorDto</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Rappresenta l'errore restituito da servizio</div>
+    <div class="field-items">
+      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> status http restituito </div>
+<div class="param">code (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> code http restituito </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la descrizione dell'errore </div>
+<div class="param">error_details (optional)</div><div class="param-desc"><span class="param-type"><a href="#ErrorDetail">array[ErrorDetail]</a></span> i dettagli errore </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="GenericResponse"><code>GenericResponse</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Risposta di un servizio generico</div>
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Contiene il messaggio eventuale del servizio chiamato </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Pagamento"><code>Pagamento</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Pagamento</div>
+    <div class="field-items">
+      <div class="param">iuv (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> identificatore univoco pagamento </div>
+<div class="param">importo (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Importo </div>
+<div class="param">data_pagamento (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data pagamento format: date</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="PagamentoDetail"><code>PagamentoDetail</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Dettaglio Pagamento</div>
+    <div class="field-items">
+      <div class="param">pagamento (optional)</div><div class="param-desc"><span class="param-type"><a href="#Pagamento">Pagamento</a></span> il pagamento </div>
+<div class="param">avviso_pagamento_detail (optional)</div><div class="param-desc"><span class="param-type"><a href="#AvvisoPagamentoDetail">AvvisoPagamentoDetail</a></span> l'avviso pagamento </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Provincia"><code>Provincia</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Provicia</div>
+    <div class="field-items">
+      <div class="param">sigla (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> sigla provincia </div>
+<div class="param">descrizione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> descrizione provincia </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Report"><code>Report</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>rappresenta report</div>
+    <div class="field-items">
+      <div class="param">nome (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> il nome del report </div>
+<div class="param">file (optional)</div><div class="param-desc"><span class="param-type"><a href="#ByteArray">byte[]</a></span> il file format: byte</div>
+<div class="param">mime_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> il content type del file </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RequestAssociaRivenditore"><code>RequestAssociaRivenditore</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>request servizio associazione rivenditore</div>
+    <div class="field-items">
+      <div class="param">codice_fiscale_rivenditore (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice fiscale rivenditore </div>
+<div class="param">data_inizio_validita (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data inizio validità associazione format: date</div>
+<div class="param">id_delega (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> id delega </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Rivenditore"><code>Rivenditore</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Rivenditore</div>
+    <div class="field-items">
+      <div class="param">denominazione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> denominazione rivenditore </div>
+<div class="param">codice_fiscale (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice fiscale rivenditore </div>
+<div class="param">partita_iva (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> cpartita iva rivenditore </div>
+<div class="param">indirizzo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> indirizzo rivenditore </div>
+<div class="param">cap (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> indirizzo rivenditore </div>
+<div class="param">codice_comune (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> il codice comune </div>
+<div class="param">descrizione_comune (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la descrizione del comune </div>
+<div class="param">sigla_provincia (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la sigla della provincia </div>
+<div class="param">fax (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> fax </div>
+<div class="param">telefono (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> telefono </div>
+<div class="param">cellulare (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> cellulare </div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email rivenditore </div>
+<div class="param">data_attivazione (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data attivazione rivenditore format: date</div>
+<div class="param">data_cessazione (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data cessazione rivenditore format: date</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="RivenditoreDetail"><code>RivenditoreDetail</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Dettaglio rivenditore</div>
+    <div class="field-items">
+      <div class="param">rivenditore (optional)</div><div class="param-desc"><span class="param-type"><a href="#Rivenditore">Rivenditore</a></span> Il rivenditore </div>
+<div class="param">utenti_associati (optional)</div><div class="param-desc"><span class="param-type"><a href="#Utente">array[Utente]</a></span> utenti associati al vivenditore </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SearchAvvisiPagamento"><code>SearchAvvisiPagamento</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>parametry di ricerca avvisi pagamento</div>
+    <div class="field-items">
+      <div class="param">anno (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> identificatore univoco pagamento </div>
+<div class="param">codice_stato_avviso_pagamento (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> stato avviso pagamento </div>
+<div class="param">codice_fiscale_rivenditore (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice fiscale rivenditore </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SearchPagamenti"><code>SearchPagamenti</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>parametry di ricerca pagamenti</div>
+    <div class="field-items">
+      <div class="param">iuv (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> identificatore univoco pagamento </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SearchRivenditori"><code>SearchRivenditori</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>parametry di ricerca rivenditori</div>
+    <div class="field-items">
+      <div class="param">denominazione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la denominazione del rivenditore </div>
+<div class="param">codice_fiscale (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice fiscale </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SearchSocietaDelegate"><code>SearchSocietaDelegate</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>parametry di ricerca rivenditori</div>
+    <div class="field-items">
+      <div class="param">denominazione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la denominazione del rivenditore </div>
+<div class="param">codice_fiscale (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice fiscale </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SearchUtenti"><code>SearchUtenti</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>parametri di ricerca utenti</div>
+    <div class="field-items">
+      <div class="param">nome (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> nome utente </div>
+<div class="param">cognome (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> cognome utente </div>
+<div class="param">codice_fiscale (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice fiscale utente </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SearchVeicoli"><code>SearchVeicoli</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>parametry di ricerca per i veicoli</div>
+    <div class="field-items">
+      <div class="param">targa (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la targa del veicolo </div>
+<div class="param">tipo_veicolo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la tipologia veicolo </div>
+<div class="param">codice_fiscale_rivenditore (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice fiscale rivenditore </div>
+<div class="param">avviso_pagamento (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> identificativo dell'avviso pagamento </div>
+<div class="param">data_inizio_sospensione_from (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data inizio sospensione (data da) format: date</div>
+<div class="param">data_inizio_sospensione_to (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data fine sospensione (data a) format: date</div>
+<div class="param">data_fine_sospensione_from (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data inizio sospensione (data da) format: date</div>
+<div class="param">data_fine_sospensione_to (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data fine sospensione (data a) format: date</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SocietaDelegata"><code>SocietaDelegata</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Società delegata</div>
+    <div class="field-items">
+      <div class="param">denominazione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> denominazione società delegata </div>
+<div class="param">codice_fiscale (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice fiscale </div>
+<div class="param">partita_iva (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> partita iva </div>
+<div class="param">indirizzo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> indirizzo </div>
+<div class="param">cap (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> indirizzo </div>
+<div class="param">codice_comune (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> il codice comune </div>
+<div class="param">descrizione_comune (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la descrizione del comune </div>
+<div class="param">sigla_provincia (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la sigla della provincia </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="SocietaDelegataDetail"><code>SocietaDelegataDetail</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Dettaglio Societa delegata</div>
+    <div class="field-items">
+      <div class="param">societa_delegata (optional)</div><div class="param-desc"><span class="param-type"><a href="#SocietaDelegata">SocietaDelegata</a></span> Il rivenditore </div>
+<div class="param">utenti_delegati (optional)</div><div class="param-desc"><span class="param-type"><a href="#Utente">array[Utente]</a></span> utenti associati alla società delegata </div>
+<div class="param">deleghe (optional)</div><div class="param-desc"><span class="param-type"><a href="#Delega">array[Delega]</a></span> Deleghe </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Sospensione"><code>Sospensione</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>la sospensione veicolo</div>
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> id sospensione format: int64</div>
+<div class="param">id_agevolazione_tau (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Il riferimento all'id agevolazione' format: int64</div>
+<div class="param">veicolo (optional)</div><div class="param-desc"><span class="param-type"><a href="#Veicolo">Veicolo</a></span> il veicolo </div>
+<div class="param">data_inizio_sospensione (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> la data di inizio della sospensione format: date</div>
+<div class="param">data_fine_sospensione (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> la data fine della sospensione format: date</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="StatoAvvisoPagamento"><code>StatoAvvisoPagamento</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>lo stato dell'avviso pagamento'</div>
+    <div class="field-items">
+      <div class="param">codice (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice stato </div>
+<div class="param">descrizione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> descrizione stato veicolo </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="StatoVeicolo"><code>StatoVeicolo</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>lo stato del veicolo</div>
+    <div class="field-items">
+      <div class="param">codice (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice stato veicolo </div>
+<div class="param">descrizione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> descrizione stato veicolo </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="TipoUtente"><code>TipoUtente</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Tipo Utente</div>
+    <div class="field-items">
+      <div class="param">codice (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice tipo utente </div>
+<div class="param">descrizione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> descrizione tipo utente </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="TipoVeicolo"><code>TipoVeicolo</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>il tipo veicolo</div>
+    <div class="field-items">
+      <div class="param">codice (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice tipo veicolo </div>
+<div class="param">descrizione (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> descrizione tipo veicolo </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="UrlRedirect"><code>UrlRedirect</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>rappresenta l'oggetto che contiene l'url su cui fare la redirect</div>
+    <div class="field-items">
+      <div class="param">url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> url su cui fare la redirect </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Utente"><code>Utente</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Utente</div>
+    <div class="field-items">
+      <div class="param">nome (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> nome Utente </div>
+<div class="param">cognome (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> cognome Utente </div>
+<div class="param">codice_fiscale (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> codice fiscale utente </div>
+<div class="param">tipo_utente (optional)</div><div class="param-desc"><span class="param-type"><a href="#TipoUtente">TipoUtente</a></span> Il tipo utente </div>
+<div class="param">rivenditori (optional)</div><div class="param-desc"><span class="param-type"><a href="#Rivenditore">array[Rivenditore]</a></span> Rivenditori associati </div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> email utente </div>
+<div class="param">telefono (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> telefono utente </div>
+<div class="param">data_primo_accesso (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data primo accesso format: date</div>
+<div class="param">data_ultimo_accesso (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data ultimo accesso format: date</div>
+<div class="param">data_cessazione (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> data in cui l'utente viene disabilitato format: date</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Veicolo"><code>Veicolo</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Il veicolo completo</div>
+    <div class="field-items">
+      <div class="param">id_veicolo (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> la PK del veicolo format: int64</div>
+<div class="param">targa (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la targa del veicolo </div>
+<div class="param">tipo_veicolo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> il tipo veicolo </div>
+<div class="param">data_atto (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> la data della minivoltura format: date</div>
+<div class="param">data_acquisizione (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> la data di acquisizione format: date</div>
+<div class="param">rivenditore (optional)</div><div class="param-desc"><span class="param-type"><a href="#Rivenditore">Rivenditore</a></span> Il rivenditore associato al veicolo </div>
+<div class="param">sospensione (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sospensione">Sospensione</a></span> La sospensione associata al veicolo </div>
+<div class="param">avviso_pagamento (optional)</div><div class="param-desc"><span class="param-type"><a href="#AvvisoPagamento">AvvisoPagamento</a></span> L'avviso pagamento' </div>
+<div class="param">pagamento (optional)</div><div class="param-desc"><span class="param-type"><a href="#Pagamento">Pagamento</a></span> Il pagamento </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="VeicoloSearchResult"><code>VeicoloSearchResult</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Il veicolo</div>
+    <div class="field-items">
+      <div class="param">id_veicolo (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> la PK del veicolo format: int64</div>
+<div class="param">targa (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la targa del veicolo </div>
+<div class="param">tipo_veicolo (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> il tipo veicolo </div>
+<div class="param">data_atto (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> la data della minivoltura format: date</div>
+<div class="param">data_acquisizione (optional)</div><div class="param-desc"><span class="param-type"><a href="#date">date</a></span> la data di acquisizione format: date</div>
+<div class="param">codice_fiscale_rivenditore (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> il codice fiscale rivenditore </div>
+<div class="param">denominazione_rivenditore (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> la denominazione del rivenditore </div>
+<div class="param">sospensione (optional)</div><div class="param-desc"><span class="param-type"><a href="#Sospensione">Sospensione</a></span> La sospensione associata al veicolo </div>
+<div class="param">iuvAvvisoPagamento (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> iuv associato all'avviso pagamento' </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

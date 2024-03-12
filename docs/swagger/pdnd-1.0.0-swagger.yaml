@@ -1,0 +1,452 @@
+swagger: '2.0'
+info:
+  description: API componente pdnd
+  version: 1.0.0
+  title: PDND
+  contact:
+    email: andrea1.fontanelli@consulenti.csi.it
+# tags are used for organizing operations
+tags:
+- name: test
+  description: test resources 
+- name: calcolo
+  description: servizi di calcolo
+  
+# basePath: /api
+# schemes:
+#    - http
+
+  
+paths:
+  
+  /test/resources:
+    get:
+      tags:
+        - test
+      summary: Test resources
+      description: Effettua il test dei servizi richiamati
+      operationId: testResources
+      produces:
+        - application/json
+      security:
+        - cookieAuth: []
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/GenericResponse'
+          description: OK
+        500:
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorDto'
+  
+  /test/v2/resources:
+    get:
+      tags:
+        - test
+      summary: Test resources
+      description: Effettua il test dei servizi richiamati
+      operationId: testResourcesV2
+      produces:
+        - application/json
+      security:
+        - cookieAuth: []
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/GenericResponse'
+          description: OK
+        500:
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorDto'          
+  
+  /calcolo/v1/calcolo-tassa:
+    post:
+      tags:
+        - calcolo
+      
+      description: servizio che effettua il calcolo tassa
+      operationId: calcoloTassaV1
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          type: string
+          description: request
+          schema:
+            $ref: '#/definitions/ParametriCalcoloTassaDto'
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/EsitoCalcoloTassaDto'
+          description: OK
+        422:
+          description: Errore di validazione input
+          schema:
+            $ref: '#/definitions/ErrorDto'
+        500:
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorDto'
+  
+  /pagamento/v1:
+    post:
+      tags:
+        - pagamento
+      description: servizio che effettua il calcolo pagamento
+      operationId: pagamentoV1
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          type: string
+          description: request
+          schema:
+            $ref: '#/definitions/ParametriPagamentoDto'
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/EsitoPagamentoDto'
+          description: OK
+        422:
+          description: Errore di validazione input
+          schema:
+            $ref: '#/definitions/ErrorDto'
+        500:
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorDto'  
+   
+  /pagamento/v1/iuv:
+    post:
+      tags:
+        - pagamento
+      description: servizio che effettua il calcolo pagamento
+      operationId: pagamentoIUVV1
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          type: string
+          description: request
+          schema:
+            $ref: '#/definitions/ParametriPagamentoDto'
+      responses:
+        200:
+          schema:
+            $ref: '#/definitions/EsitoPagamentoIUVDto'
+          description: OK
+        422:
+          description: Errore di validazione input
+          schema:
+            $ref: '#/definitions/ErrorDto'
+        500:
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/ErrorDto'
+
+definitions:
+  
+  TipoCalcolo:
+    type: string
+    enum: &TipoCalcolo  [RIC, PRO, CPL]
+  
+  GenericResponse:
+    type: object
+    description: Risposta di un servizio generico
+    properties:
+      message:
+        type: string
+        description: Contiene il messaggio eventuale del servizio chiamato
+        example: 'Servizio ha risposto correttamente'
+  
+  ErrorDto:
+    type: object
+    description: Rappresenta l'errore restituito da servizio
+    properties:
+      status:
+        type: integer
+        description: status http restituito
+        example: '500, 400, ecc'
+      code:
+        type: string
+        description: code http restituito
+        example: 'Internal server error, ecc'
+      description:
+        type: string
+        description: la descrizione dell'errore
+        example: 'Internal server error, ecc'
+      error_details:
+        type: array
+        description: i dettagli errore
+        items:
+          $ref: '#/definitions/ErrorDetail'
+  ErrorDetail:
+    type: object
+    description: rappresenta il dettaglio errore restituito in caso di errori di validazione sui campi di input
+    properties:
+      field:
+        type: string
+        description: il nome del campo per cui è falita la validazione
+        example: 'name, surname'
+      error:
+        type: string
+        description: l'errore di validazione effettivo
+        example: 'campo obbligatorio, ecc'
+      description:
+        type: string
+        description: la descrizione dell'errore
+        example: 'Internal server error, ecc'
+  
+  
+  CompensazioneDto:
+    title: compensazione
+    type: object
+    properties:
+      modalita_compensazione:
+        type: string
+        description: modalità compensazione
+      targa:
+        type: string
+        description: la targa del veicolo in compensazione
+        example: 'AA000BB' 
+      tipo_targa:
+        type: string
+        description: il tipo targa veicolo in compensazione
+        example: A= Autoveicolo, M, Motoveicolo, ecc
+      scadenza:
+        type: string
+        description: la scadenza in formato MM/YYYY veicolo in compensazione
+        example: 05/2024 per indicare maggio 2004 
+      validita:
+        type: integer
+        format: int32
+        description: la validità espressa in mesi
+      data_evento:
+        type: string
+        format: date
+        description: data evento
+      
+  ParametriCalcoloTassaDto:
+    title: Parametri Calcolo tassa
+    type: object
+    properties:
+      mittente:
+        $ref: '#/definitions/MittenteDto'
+        description: Il mettente che effettua il calcolo
+      targa:
+        type: string
+        description: la targa del veicolo
+        example: 'AA000BB' 
+      tipo_targa:
+        type: string
+        description: il tipo targa veicolo
+        example: A= Autoveicolo, M, Motoveicolo, ecc
+      tipo_calcolo:
+        type: string
+        description: il tipo calcolo
+        example: Valori disponibili in TipoCalcolo (RICHIESTA[RIC], PROPOSTA[PRO])
+      scadenza:
+        type: string
+        description: la scadenza in formato MM/YYYY 
+        example: 05/2024 per indicare maggio 2004 
+      validita:
+        type: integer
+        format: int32
+        description: la validità espressa in mesi
+      codice_tipo_riduzione:
+        type: string
+        description: codice tipo riduzione
+      compensazione:
+        $ref: '#/definitions/CompensazioneDto'
+        description: Eventuale compensazione
+      calcolo_ridotto:
+        type: boolean
+        description: indica se viene applicato il calcolo ridotto
+  
+  ParametriPagamentoDto:
+    title: Parametri Calcolo tassa
+    type: object
+    properties:
+      mittente:
+        $ref: '#/definitions/MittenteDto'
+        description: Il mettente che effettua il calcolo
+      identificativo_pagamento:
+        type: string
+        description: identificativo pagamento
+      iuv:
+        type: string
+        description: Identificativo Univoco Pagamento
+      transazione_ente:
+        type: string
+        description: transazione ente
+      numero_ricevuta:
+        type: string
+        description: numero ricevuta
+      spese_esazione:
+        $ref: '#/definitions/ValutaDto'
+        description: spese di esazione
+      transazione_pos:
+        type: string
+        description: transazione pos
+      credito_utilizzato:
+        $ref: '#/definitions/ValutaDto'
+        description: credito utilizzato
+        
+  MittenteDto:
+    title: Mittente
+    type: object
+    properties:
+      codice:
+        type: string
+        description: codice mittente
+      tipo_fruitore:
+        type: string
+        description: tipo fruitore
+      id_comunicazione:
+        type: string
+        description: codice univoco
+        
+  ValutaDto:
+    title: Valuta
+    type: object
+    properties:
+      importo:
+        type: integer
+        format: int32
+      divisa:
+        type: string
+        description: divisa
+        example: Euro = EUR
+  
+  ErroreEsitoDto:
+    title: Errore
+    type: object
+    properties:
+      codice:
+        type: string
+        description: codice errore
+      descrizione:
+        type: string
+        description: descrizione
+  
+  EsitoPagamentoDto:
+    title: Esito pagamento
+    type: object
+    properties:
+      esito:
+        type: string
+        description: esito 
+      data_pagamento:
+        type: string
+        format: date
+        description: data pagamento
+      errori:
+        type: array
+        items:
+          $ref: '#/definitions/ErroreEsitoDto'
+        description: eventuali errori del pagamento
+  
+  EsitoPagamentoIUVDto:
+    title: Esito pagamento IUV
+    type: object
+    properties:
+      esito:
+        type: string
+        description: esito 
+      iuv:
+        type: string
+        description: Identificativo Univoco Pagamento 
+      totale:
+        type: integer
+        format: int32
+        description: Importo totale
+      codice_fiscale_ente:
+        type: string
+        description: CF Ente
+      errori:
+        type: array
+        items:
+          $ref: '#/definitions/ErroreEsitoDto'
+        description: eventuali errori del pagamento
+  
+  EsitoCalcoloTassaDto:
+    title: Esito Calcolo tassa
+    type: object
+    properties:
+      targa:
+        type: string
+        description: la targa del veicolo
+        example: 'AA000BB' 
+      tipo_targa:
+        type: string
+        description: il tipo targa veicolo
+        example: A= Autoveicolo, M, Motoveicolo, ecc
+      scadenza:
+        type: string
+        description: la scadenza in formato MM/YYYY 
+        example: 05/2024 per indicare maggio 2004 
+      validita:
+        type: integer
+        format: int32
+        description: la validità espressa in mesi
+      codice_fiscale:
+        type: string
+        description: Il codice fiscale intestatario
+      tipo_riduzione:
+        type: string
+        description: codice tipo riduzione
+      identificativo_pagamento:
+        type: string
+        description: identificativo
+      riduzione:
+        type: string
+        description: la riduzione
+      esplicativo:
+        type: string
+        description: esplicativo
+      tipo_sanzionamento:
+        type: string
+        description: tipo sanzionamento   
+      tassa:
+        $ref: '#/definitions/ValutaDto'
+        description: tassa 
+      sanzioni:
+        $ref: '#/definitions/ValutaDto'
+        description: sanzioni  
+      interessi:
+        $ref: '#/definitions/ValutaDto'
+        description: interessi  
+      totale_dovuto:
+        $ref: '#/definitions/ValutaDto'
+        description: totale dovuto  
+      totale_da_versare:
+        $ref: '#/definitions/ValutaDto'
+        description: totale da versare  
+      esito:
+        type: string
+        description: esito 
+      ultimo_giorno_utile:
+        type: string
+        format: date
+        description: ultimo giorno utile 
+      errori:
+        type: array
+        items:
+          $ref: '#/definitions/ErroreEsitoDto'
+        description: eventuali errori del calcolo tassa
+      
+      
+          
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+# basePath: /studiofontanelli/starivbl/1.0.0
+schemes:
+ - https
+ - http
+# Added by API Auto Mocking Plugin
+basePath: /andreafontanelli/starivbl/1.0.0

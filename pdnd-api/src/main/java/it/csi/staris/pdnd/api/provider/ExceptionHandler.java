@@ -1,0 +1,63 @@
+package it.csi.staris.pdnd.api.provider;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
+
+import org.jboss.resteasy.spi.UnauthorizedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+
+import it.csi.staris.pdnd.api.adapter.ErrorDetailAdapter;
+import it.csi.staris.pdnd.api.dto.ErrorDto;
+import it.csi.staris.pdnd.business.exception.ForbiddenException;
+import it.csi.staris.pdnd.business.exception.NoDataFoundException;
+import it.csi.staris.pdnd.business.exception.UnauthorizedHelperException;
+import it.csi.staris.pdnd.business.exception.ValidationException;
+import it.csi.staris.pdnd.util.Constants;
+import it.csi.staris.pdnd.util.Tracer;
+
+
+
+@Provider
+public class ExceptionHandler implements ExceptionMapper<RuntimeException> {
+
+	private static Logger LOG = LoggerFactory.getLogger(Constants.LOGGER_PREFIX);
+
+	@Autowired
+	private ErrorDetailAdapter errorDetailAdapter;
+
+	public Response toResponse(RuntimeException exception) {
+		String method = "toResponse";
+
+		Tracer.info(LOG, getClass().getName(), method, "Exception " + exception);
+
+		ErrorDto e = new ErrorDto();
+		e.setDescription(exception.getMessage());
+
+		HttpStatus httpStatus = null;
+
+		if(exception instanceof ValidationException) {
+			httpStatus = HttpStatus.UNPROCESSABLE_ENTITY;
+		}else if(exception instanceof UnauthorizedException) {
+			httpStatus = HttpStatus.UNAUTHORIZED;
+		}else if(exception instanceof UnauthorizedHelperException) {
+			httpStatus = HttpStatus.UNAUTHORIZED;
+		}else if(exception instanceof NoDataFoundException) {
+			httpStatus = HttpStatus.NOT_FOUND;
+		}else if(exception instanceof ForbiddenException) {
+			httpStatus = HttpStatus.FORBIDDEN;
+		}else {
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		e.setStatus(httpStatus.value());
+		e.setCode(httpStatus.getReasonPhrase());
+
+
+		Tracer.info(LOG, getClass().getName(), method, e);
+
+		return Response.status(e.getStatus()).entity(e).build();
+	}
+}

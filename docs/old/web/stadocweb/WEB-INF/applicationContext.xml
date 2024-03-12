@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean name="applicationContextManager"
+		class="it.csi.util.beanlocatorfactory.SpringApplicationContextManager" />
+
+
+	<bean id="cxfMtomDelegate"
+		class="it.doqui.index.ecmengine.client.mtom.EcmEngineMtomDelegateImpl"
+		lazy-init="true">
+		<constructor-arg value="@cxf.pa.url@"></constructor-arg>
+	</bean>
+
+	<bean id="ssoUtil" class="it.csi.staris.pdnd.util.SsoUtil" />
+	<bean id="encryptUtil" class="it.csi.staris.pdnd.util.EncryptUtil" />
+	
+	<bean id="stadocService"  class="it.csi.staris.pdnd.business.impl.StadocServiceImpl" init-method="init">
+		<property name="pdFile" value="/WEB-INF/defpd_stadoc.xml" />	
+		
+	</bean>
+
+
+</beans>

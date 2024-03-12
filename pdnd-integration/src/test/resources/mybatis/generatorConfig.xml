@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="stacore_stadocweb" targetRuntime="MyBatis3">
+
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <commentGenerator>
+            <!-- whether the removal of the automatically generated annotation true： is ： false: No information -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- database connection ： drive 、 connection address 、 username 、 password, here configuration is mysql ， can of course configuration oracle databases -->
+       	
+       	<jdbcConnection
+                driverClass="org.postgresql.Driver"
+                connectionURL="jdbc:postgresql://tst-domdb47.csi.it:5432/PGTST02"
+                userId="taupg_rw" password="inahth9i">
+        </jdbcConnection>
+		
+        
+        <!-- default false， JDBC DECIMAL and NUMERIC type resolution for Integer，
+            true to JDBC DECIMAL and NUMERIC type resolution for java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- GENERATE DTO CLASS FROM TABLE DEFINITION -->
+        <javaModelGenerator
+                targetPackage="it.csi.staris.pdnd.integration.dto"
+                targetProject="./src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+
+        <!-- READ MAPPER XML DEFINITION FROM RESOURCES -->
+        <sqlMapGenerator
+                targetPackage="it.csi.staris.pdnd.integration.dao"
+                targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- GENERATE MAPPER FROM XML CONFIGURATION -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="it.csi.staris.pdnd.integration.dao"
+                             targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- TABELLE DA CREARE -->
+        
+        
+        <table tableName="doc_d_parametro"/>
+        <table tableName="doc_d_servizio"/>
+        <table tableName="doc_d_stato_richiesta"/>
+        <table tableName="doc_d_struttura_acta"/>
+        <table tableName="doc_d_tipo_documento"/>
+        <table tableName="doc_d_tipo_fornitore"/>
+        <table tableName="doc_d_tipo_operazione"/>
+        <table tableName="doc_r_fruitore_servizio"/>
+        <table tableName="doc_r_richiesta_documento"/>
+        <table tableName="doc_r_tipo_doc_padre_figlio"/>
+        <table tableName="doc_t_documento">
+        	<generatedKey column="id_documento" sqlStatement="select nextval('doc_t_documento_id_documento_seq'::regclass)"/>
+        </table>
+        <table tableName="doc_t_fruitore"/>
+        <table tableName="doc_t_richiesta">
+        <generatedKey column="id_richiesta" sqlStatement="select nextval(' doc_t_richiesta_id_richiesta_seq'::regclass)"/>
+        </table>
+        
+        
+        
+        
+       
+         
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,520 @@
+{
+	"info": {
+		"_postman_id": "20753bd5-bd85-4693-9b1b-b294c734cf31",
+		"name": "TEST PLAN - PDND",
+		"description": "API REST per stadocweb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3823498",
+		"_collection_link": "https://gold-flare-5826.postman.co/workspace/MIGRAZIONE-STAON~c8335ab8-fb55-47e1-9a5f-ec624bca3b67/collection/3823498-20753bd5-bd85-4693-9b1b-b294c734cf31?action=share&source=collection_link&creator=3823498"
+	},
+	"item": [
+		{
+			"name": "TST01 -TEST RESOURCES",
+			"item": [
+				{
+					"name": "TST01A - TEST RESOURCE",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "stadocwebwf",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mypass",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{devwildfly}}/{{context}}/api/test/resources",
+							"host": [
+								"{{devwildfly}}"
+							],
+							"path": [
+								"{{context}}",
+								"api",
+								"test",
+								"resources"
+							]
+						},
+						"description": "Metodo di ricerca dati avviso di accertamento"
+					},
+					"response": []
+				}
+			],
+			"description": "Test del servizio di test resource. Serve solo per verificarne il funzionamento iniziale.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "TST02 -CALCOLO TASSA",
+			"item": [
+				{
+					"name": "TST02A - CALCOLO TASSA MOD RICHIESTA",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "stadocwebwf",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mypass",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mittente\":{\n        \"codice\":\"MITT_ACI\",\n        \"tipo_fruitore\":\"R\"\n    },\n    \"targa\":\"RO314097\",\n    \"tipo_targa\":\"A\",\n    \"tipo_calcolo\":\"RIC\",\n    \"scadenza\":\"12/2019\",\n    \"validita\":\"12\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/{{context}}/api/calcolo/v1/calcolo-tassa",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"{{context}}",
+								"api",
+								"calcolo",
+								"v1",
+								"calcolo-tassa"
+							]
+						},
+						"description": "Metodo di ricerca dati avviso di accertamento"
+					},
+					"response": []
+				},
+				{
+					"name": "TST02B - CALCOLO TASSA MOD RICHIESTA WRONG DATA",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "stadocwebwf",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mypass",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mittente\":{\n        \"codice\":\"MITT_ACI\",\n        \"tipo_fruitore\":\"R\"\n    },\n    \"targa\":\"RO314097\",\n    \"tipo_targa\":\"A\",\n    \"tipo_calcolo\":\"RIC\",\n    \"scadenza\":\"12/2019\",\n    \"validita\":\"12\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/{{context}}/api/calcolo/v1/calcolo-tassa",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"{{context}}",
+								"api",
+								"calcolo",
+								"v1",
+								"calcolo-tassa"
+							]
+						},
+						"description": "Metodo di ricerca dati avviso di accertamento"
+					},
+					"response": []
+				},
+				{
+					"name": "TST02E - CALCOLO TASSA COMPENSAZIONE",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "stadocwebwf",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mypass",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mittente\":{\n        \"codice\":\"MITT_ACI\",\n        \"tipo_fruitore\":\"R\",\n        \"id_comunicazione\":\"20240310-011\"\n    },\n    \"targa\":\"TO98646M\",\n    \"tipo_targa\":\"A\",\n    \"scadenza\":\"06/2020\",\n    \"validita\":\"12\",\n    \"tipo_calcolo\":\"CPL\",\n    \"compensazione\":{\n        \"modalita_compensazione\":\"1\",\n        \"targa\":\"CD283LP\",\n        \"tipo_targa\":\"A\",\n        \"scadenza\":\"02/2022\",\n        \"validita\":\"12\",\n        \"data_evento\":\"2021-06-01\"\n\n    }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/{{context}}/api/calcolo/v1/calcolo-tassa",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"{{context}}",
+								"api",
+								"calcolo",
+								"v1",
+								"calcolo-tassa"
+							]
+						},
+						"description": "Metodo di ricerca dati avviso di accertamento"
+					},
+					"response": []
+				}
+			],
+			"description": "Test del servizio di test resource. Serve solo per verificarne il funzionamento iniziale.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "TST03 - PAGAMENTO",
+			"item": [
+				{
+					"name": "TST03A - PAGAMENTO",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "stadocwebwf",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mypass",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mittente\":{\n        \"codice\":\"MITT_ACI\",\n        \"tipo_fruitore\":\"R\"\n    },\n    \"targa\":\"RO314097\",\n    \"tipo_targa\":\"A\",\n    \"tipo_calcolo\":\"RIC\",\n    \"scadenza\":\"12/2019\",\n    \"validita\":\"12\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/{{context}}/api/pagamento/v1",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"{{context}}",
+								"api",
+								"pagamento",
+								"v1"
+							]
+						},
+						"description": "Metodo di ricerca dati avviso di accertamento"
+					},
+					"response": []
+				},
+				{
+					"name": "TST03A - PAGAMENTO Copy",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "stadocwebwf",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mypass",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mittente\":{\n        \"codice\":\"MITT_ACI\",\n        \"tipo_fruitore\":\"R\"\n    },\n    \"targa\":\"RO314097\",\n    \"tipo_targa\":\"A\",\n    \"tipo_calcolo\":\"RIC\",\n    \"scadenza\":\"12/2019\",\n    \"validita\":\"12\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/{{context}}/api/pagamento/v1",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"{{context}}",
+								"api",
+								"pagamento",
+								"v1"
+							]
+						},
+						"description": "Metodo di ricerca dati avviso di accertamento"
+					},
+					"response": []
+				}
+			],
+			"description": "Test del servizio di test resource. Serve solo per verificarne il funzionamento iniziale.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "TST04 - PAGAMENTO IUV",
+			"item": [
+				{
+					"name": "TST04A - PAGAMENTO IUV",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "stadocwebwf",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "mypass",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mittente\":{\n        \"codice\":\"MITT_ACI\",\n        \"tipo_fruitore\":\"R\",\n        \"id_comunicazione\":\"20240312-001\"\n    },\n    \"identificativo_pagamento\":\"MINIMMI\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/{{context}}/api/pagamento/v1/iuv",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"{{context}}",
+								"api",
+								"pagamento",
+								"v1",
+								"iuv"
+							]
+						},
+						"description": "Metodo di ricerca dati avviso di accertamento"
+					},
+					"response": []
+				}
+			],
+			"description": "Test del servizio di test resource. Serve solo per verificarne il funzionamento iniziale.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "http://127.0.0.1:8080",
+			"type": "string"
+		},
+		{
+			"key": "dev",
+			"value": "http://dev-applogic.reteunitaria.piemonte.it",
+			"type": "string"
+		},
+		{
+			"key": "IDENTITA",
+			"value": "AAAAAA00A11S000A",
+			"disabled": true
+		},
+		{
+			"key": "tst",
+			"value": "http://tst-applogic.reteunitaria.piemonte.it",
+			"type": "string"
+		},
+		{
+			"key": "devwildfly",
+			"value": "http://10.102.43.1:18810",
+			"type": "string"
+		},
+		{
+			"key": "context",
+			"value": "pdnd",
+			"type": "string"
+		}
+	]
+}

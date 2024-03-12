@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4"
+         xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+         http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	
+	<distributable />
+	
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+ 	 
+ 	<filter> 
+ 		<filter-name>downloadFileValidationFilter</filter-name>
+		<filter-class>it.csi.staris.pdnd.presentation.pdnd.filter.DownloadFileValidationFilter</filter-class>
+	</filter> 
+	
+	<filter> 
+ 		<filter-name>ssoFilter</filter-name>
+		<filter-class>it.csi.staris.pdnd.presentation.pdnd.filter.SsoFilter</filter-class>
+	</filter> 
+	
+	<filter> 
+ 		<filter-name>checkDigitFilter</filter-name>
+		<filter-class>it.csi.staris.pdnd.presentation.pdnd.filter.CheckDigitFilter</filter-class>
+	</filter> 
+	
+	
+	<filter-mapping>
+		<filter-name>downloadFileValidationFilter</filter-name>
+		<url-pattern>/checkDigit/download/downloadfile</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>ssoFilter</filter-name>
+		<url-pattern>/auth/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>checkDigitFilter</filter-name>
+		<url-pattern>/checkDigit/*</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>downloadFileServlet</servlet-name>
+		<servlet-class>it.csi.staris.pdnd.presentation.pdnd.servlet.DownloadFileServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>uploadFileServlet</servlet-name>
+		<servlet-class>it.csi.staris.pdnd.presentation.pdnd.servlet.UploadFileServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>testRespourceServlet</servlet-name>
+		<servlet-class>it.csi.staris.pdnd.presentation.pdnd.servlet.TestResourceServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>downloadFileServlet</servlet-name>
+		<url-pattern>/checkDigit/download/downloadfile</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>uploadFileServlet</servlet-name>
+		<url-pattern>/upload/uploadfile</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>testRespourceServlet</servlet-name>
+		<url-pattern>/testResource</url-pattern>
+	</servlet-mapping>
+
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<page-encoding>UTF-8</page-encoding>
+		</jsp-property-group>
+	</jsp-config>
+
+
+	
+
+
+	
+
+	
+
+</web-app>
